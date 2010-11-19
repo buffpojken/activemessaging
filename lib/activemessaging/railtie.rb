@@ -7,7 +7,7 @@ module ActiveMessaging
   class Railtie < Rails::Railtie
 
     initializer 'i.wonder.what.this.is' do
-      APP_ROOT = Rails.root
+      $app_root = Rails.root
 
       path = File.expand_path("#{Rails.root}/config/messaging.rb")
       begin
