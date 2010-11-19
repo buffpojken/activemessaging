@@ -6,7 +6,7 @@ module ActiveMessaging
 
   class Railtie < Rails::Railtie
     
-    initializer do
+    initializer 'i.wonder.what.this.is' do
       puts "NINJA!!"
       puts Rails.root
     end
