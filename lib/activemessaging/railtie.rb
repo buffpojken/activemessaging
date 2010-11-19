@@ -20,8 +20,8 @@ module ActiveMessaging
 
 
 
-      load Rails.root + '/app/processors/application.rb' if File.exist?("#{Rails.root}/app/processors/application.rb")
-      Dir[Rails.root + '/app/processors/*.rb'].each do |f|
+      load File.expand_path(Rails.root + '/app/processors/application.rb') if File.exist?("#{Rails.root}/app/processors/application.rb")
+      Dir[File.expand_path(Rails.root + '/app/processors/*.rb')].each do |f|
         unless f.match(/\/application.rb/)
           load f
         end
