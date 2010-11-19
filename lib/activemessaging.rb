@@ -4,8 +4,8 @@ module ActiveMessaging
   unless defined? Rails
     APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
     APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
-    ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
   end
+  ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 
   # Used to indicate that the processing for a thread shoud complete
   class StopProcessingException < Interrupt #:nodoc:
