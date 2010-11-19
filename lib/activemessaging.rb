@@ -1,3 +1,5 @@
+puts Rails.root
+
 module ActiveMessaging
   APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
   APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
