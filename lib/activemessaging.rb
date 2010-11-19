@@ -91,8 +91,8 @@ module ActiveMessaging
 
   def self.load_activemessaging
     load_extensions
-  #  load_config
-  #  load_processors
+    load_config
+    load_processors
   end
 
   def self.start
