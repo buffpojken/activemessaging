@@ -83,7 +83,6 @@ module ActiveMessaging
     ActiveMessaging::Gateway.filters = []
     ActiveMessaging::Gateway.named_destinations = {}
     ActiveMessaging::Gateway.processor_groups = {}
-
     # now load the config
     load_config
     load_processors(false)
@@ -122,9 +121,9 @@ end
 ActiveMessaging.load_activemessaging
 
 # reload these on each Rails request - leveraging Dispatcher semantics for consistency
-# if defined? Rails
-#   ActiveMessaging.logger.info "Rails available: Adding dispatcher prepare callback."
-#   ActionDispatch::Callbacks.to_prepare :activemessaging do
-#     ActiveMessaging.reload_activemessaging
-#   end
-# end
+if defined? Rails
+  ActiveMessaging.logger.info "Rails available: Adding dispatcher prepare callback."
+  ActionDispatch::Callbacks.to_prepare :activemessaging do
+    ActiveMessaging.reload_activemessaging
+  end
+end
