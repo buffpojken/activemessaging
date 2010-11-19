@@ -89,8 +89,8 @@ module ActiveMessaging
 
   def self.load_activemessaging
     load_extensions
-    load_config
-    load_processors
+  #  load_config
+  #  load_processors
   end
 
   def self.start
@@ -117,7 +117,7 @@ EOM
 end
 
 #load these once to start with
-#ActiveMessaging.load_activemessaging
+ActiveMessaging.load_activemessaging
 
 # reload these on each Rails request - leveraging Dispatcher semantics for consistency
 # if defined? Rails
