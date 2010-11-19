@@ -90,7 +90,6 @@ module ActiveMessaging
   end
 
   def self.load_activemessaging
-    return if APP_ENV == 'test'
     load_extensions
     load_config
     load_processors
