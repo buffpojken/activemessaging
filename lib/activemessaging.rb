@@ -1,7 +1,7 @@
 #require 'activemessaging/railtie'
 module ActiveMessaging
 
-  APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
+  APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || "."
   APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
   
   ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
@@ -90,7 +90,6 @@ module ActiveMessaging
 
   def self.load_activemessaging
     load_extensions
-    return if Rails.env == 'test'
     load_config
     load_processors
   end
@@ -112,7 +111,6 @@ EOM
       logger.error err_msg
       exit
     end
-    return if APP_ENV == 'test'
     Gateway.start
   end
 
