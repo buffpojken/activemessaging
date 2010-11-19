@@ -89,8 +89,8 @@ module ActiveMessaging
   end
 
   def self.load_activemessaging
-    puts APP_ROOT
     load_extensions
+    return if Rails.env == 'test'
     load_config
     load_processors
   end
