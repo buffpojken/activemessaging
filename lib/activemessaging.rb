@@ -5,6 +5,8 @@ module ActiveMessaging
   APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
   APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
   ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+  
+  DEBUG = false
 
   # Used to indicate that the processing for a thread shoud complete
   class StopProcessingException < Interrupt #:nodoc:
@@ -45,7 +47,7 @@ module ActiveMessaging
         adapter_name = File.basename(a, ".rb")
         require 'activemessaging/adapters/' + adapter_name
       rescue RuntimeError, LoadError => e
-        logger.debug "ActiveMessaging: adapter #{adapter_name} not loaded: #{ e.message }"
+        logger.debug "ActiveMessaging: adapter #{adapter_name} not loaded: #{ e.message }" if DEBUG
       end
     end
   end
