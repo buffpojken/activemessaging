@@ -1,7 +1,6 @@
 #require 'activemessaging/railtie'
 module ActiveMessaging
 
-
   APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
   APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
   
@@ -90,6 +89,7 @@ module ActiveMessaging
   end
 
   def self.load_activemessaging
+    puts APP_ROOT
     load_extensions
     load_config
     load_processors
