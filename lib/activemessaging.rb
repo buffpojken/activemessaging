@@ -112,7 +112,7 @@ EOM
       logger.error err_msg
       exit
     end
-
+    return if Rails.env == 'test'
     Gateway.start
   end
 
