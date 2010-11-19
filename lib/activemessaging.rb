@@ -128,3 +128,5 @@ if defined? Rails
     ActiveMessaging.reload_activemessaging
   end
 end
+
+puts Rails.env
