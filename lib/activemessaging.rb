@@ -1,8 +1,11 @@
 require 'activemessaging/railtie'
 module ActiveMessaging
-  APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
-  APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
-  ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+
+  unless defined? Rails
+    APP_ROOT = ENV['APP_ROOT'] || ((defined? Rails) && Rails.root) || ENV['RAILS_ROOT'] || File.dirname($0)
+    APP_ENV  = ENV['APP_ENV']  || ((defined? Rails) && Rails.env)  || ENV['RAILS_ENV']  || 'development'
+    ROOT     = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+  end
 
   # Used to indicate that the processing for a thread shoud complete
   class StopProcessingException < Interrupt #:nodoc:
@@ -118,9 +121,9 @@ end
 ActiveMessaging.load_activemessaging
 
 # reload these on each Rails request - leveraging Dispatcher semantics for consistency
-if defined? Rails
-  ActiveMessaging.logger.info "Rails available: Adding dispatcher prepare callback."
-  ActionDispatch::Callbacks.to_prepare :activemessaging do
-    ActiveMessaging.reload_activemessaging
-  end
-end
+# if defined? Rails
+#   ActiveMessaging.logger.info "Rails available: Adding dispatcher prepare callback."
+#   ActionDispatch::Callbacks.to_prepare :activemessaging do
+#     ActiveMessaging.reload_activemessaging
+#   end
+# end
