@@ -119,7 +119,6 @@ ActiveMessaging.load_activemessaging
 
 # reload these on each Rails request - leveraging Dispatcher semantics for consistency
 if defined? Rails
-  ActiveMessaging.logger.info "Rails available: Adding dispatcher prepare callback."
   ActionDispatch::Callbacks.to_prepare :activemessaging do
     ActiveMessaging.reload_activemessaging
   end
