@@ -72,7 +72,6 @@ module ActiveMessaging
     load APP_ROOT + '/app/processors/application.rb' if File.exist?("#{APP_ROOT}/app/processors/application.rb")
     Dir[APP_ROOT + '/app/processors/*.rb'].each do |f|
       unless f.match(/\/application.rb/)
-        logger.debug "ActiveMessaging: Loading #{f}" if first
         load f
       end
     end
